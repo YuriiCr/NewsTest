@@ -15,6 +15,8 @@ class NewsListViewController: UIViewController {
     private var newsArray = [NewsModel]()
     private let cellIndetifer = "newsCell"
     
+    private var pageNumber = 2
+    
     @IBOutlet weak var tableView: UITableView!
     
     //MARK: View Life Cycle
@@ -33,9 +35,14 @@ class NewsListViewController: UIViewController {
     //MARK: IBActions
     
     @IBAction func reloadData(_ sender: UIBarButtonItem) {
-        loadData()
+        self.pageNumber = 2
+        if InternetService.isConnectedToInternet() {
+            loadDataFromInternet()
+        } else {
+            showAlert()
+            loadDataFromCoreData()
+        }
     }
-    
     
     //MARK: Private functions
     
@@ -55,8 +62,22 @@ class NewsListViewController: UIViewController {
                 }
             }
         }
-       
-
+    }
+    
+    private func loadNextData() {
+        let number = self.pageNumber
+        DispatchQueue.global(qos: .background).async { [weak self] in
+            InternetService.shared.getNews(page: number, block: { (news) in
+                self?.pageNumber += 1
+                for article in news {
+                    self?.newsArray.append(article)
+                    CoreDataManager.shared.saveNews(with: article)
+                }
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+            })
+        }
     }
     
     private func loadDataFromCoreData() {
@@ -65,11 +86,17 @@ class NewsListViewController: UIViewController {
             self?.newsArray = result
             DispatchQueue.main.async {
                 self?.tableView?.reloadData()
-                print("load from core data")
             }
         }
     }
     
+    private func showAlert() {
+        let alert = UIAlertController(title: Constants.alertTitle, message: Constants.alertMessage, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: Constants.alertAction, style: .default)
+        alert.addAction(OKAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+
 }
 
 extension NewsListViewController: UITableViewDelegate {
@@ -97,9 +124,21 @@ extension NewsListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIndetifer, for: indexPath) as? NewsTableViewCell else {  return UITableViewCell() }
         cell.news = newsArray[indexPath.row]
         
+        if indexPath.row % 15 == 0 {
+            loadNextData()
+        }
+        
         return cell
     }
     
+}
+
+extension NewsListViewController {
+    private struct Constants {
+        static let alertMessage = "No internet access"
+        static let alertTitle = "Message"
+        static let alertAction = "OK"
+    }
 }
 
 

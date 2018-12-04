@@ -15,7 +15,7 @@ class InternetService {
     // MARK: Private properties
     
     private let apiKey = "61fde4d05c7142de8ca04af0fcabf62b"
-    private let urlString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=61fde4d05c7142de8ca04af0fcabf62b"
+    private let urlString = "https://newsapi.org/v2/top-headlines?country=us&apiKey=eeafa5b14bc3400f8c8fca38e195f1c8"
     
     //MARK: Singlton
     
