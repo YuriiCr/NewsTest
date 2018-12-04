@@ -36,24 +36,10 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     private func fillImageView() {
-//        self.imageView.map { getImage(with: news?.urlToImage, to: $0) }
         guard let urlString = news?.urlToImage else { return }
         guard let url = URL(string: urlString) else { return }
         let resource = ImageResource(downloadURL: url)
         self.newsImageView?.kf.setImage(with: resource)
     }
     
-    private func getImage(with urlString: String?, to imageView: UIImageView) {
-        guard let urlString = urlString else { return }
-        guard let url = URL(string: urlString) else { return }
-        DispatchQueue.global(qos: .background).async {
-            guard let data = try? Data(contentsOf: url) else { return }
-            let image = UIImage(data: data)
-            DispatchQueue.main.async {
-                imageView.image = image
-            }
-        }
-    }
-    
-   
 }

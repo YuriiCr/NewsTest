@@ -47,7 +47,9 @@ class NewsListViewController: UIViewController {
     private func loadDataFromInternet() {
         DispatchQueue.global(qos: .background).async { [weak self] in
             InternetService.shared.getNews { (news) in
+                CoreDataManager.shared.deleteAll()
                 self?.newsArray = news
+                _ = news.map { CoreDataManager.shared.saveNews(with: $0) }
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
@@ -58,7 +60,14 @@ class NewsListViewController: UIViewController {
     }
     
     private func loadDataFromCoreData() {
-        
+        CoreDataManager.shared.newsFromCoreData {[weak self] news in
+            let result = news.map { NewsModel.newsModel(from: $0) }
+            self?.newsArray = result
+            DispatchQueue.main.async {
+                self?.tableView?.reloadData()
+                print("load from core data")
+            }
+        }
     }
     
 }
