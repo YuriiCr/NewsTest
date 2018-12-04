@@ -24,6 +24,13 @@ class NewsListViewController: UIViewController {
         loadData()
     }
     
+    //MARK: IBActions
+    
+    @IBAction func reloadData(_ sender: UIBarButtonItem) {
+        loadData()
+    }
+    
+    
     //MARK: Private functions
     
     private func loadData() {
