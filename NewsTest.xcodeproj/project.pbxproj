@@ -22,6 +22,7 @@
 		95E740B621B66BD7000B40AF /* RootViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E740B521B66BD7000B40AF /* RootViewProtocol.swift */; };
 		95E740B821B66E47000B40AF /* DetailNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E740B721B66E47000B40AF /* DetailNewsViewController.swift */; };
 		95E740BD21B68000000B40AF /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E740BC21B68000000B40AF /* NewsTableViewCell.swift */; };
+		95E740BF21B6AB22000B40AF /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E740BE21B6AB22000B40AF /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		95E740B521B66BD7000B40AF /* RootViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewProtocol.swift; sourceTree = "<group>"; };
 		95E740B721B66E47000B40AF /* DetailNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNewsViewController.swift; sourceTree = "<group>"; };
 		95E740BC21B68000000B40AF /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		95E740BE21B6AB22000B40AF /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		DAB3437A0A489435AAA47323 /* Pods_NewsTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F16426C4286835758ECCCC67 /* Pods-NewsTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewsTest/Pods-NewsTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				95E740B721B66E47000B40AF /* DetailNewsViewController.swift */,
+				95E740BE21B6AB22000B40AF /* DetailView.swift */,
 			);
 			path = DetailNewsViewController;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95E740B121B5AC85000B40AF /* News+CoreDataProperties.swift in Sources */,
+				95E740BF21B6AB22000B40AF /* DetailView.swift in Sources */,
 				95E740BD21B68000000B40AF /* NewsTableViewCell.swift in Sources */,
 				95E740AD21B5A8CF000B40AF /* NewsModel.swift in Sources */,
 				95E740B821B66E47000B40AF /* DetailNewsViewController.swift in Sources */,

@@ -25,7 +25,7 @@ class InternetService {
     //MARK: Public functions
     
     func getNews(block: @escaping ([NewsModel]) -> ()) {
-        Alamofire.request(urlString).responseJSON { (response) in
+        Alamofire.request(urlString).responseJSON { [weak self] (response) in
             guard let response = response.value as? [String : Any] else { return }
             let responseJSON = JSON(response)
             guard let articles = responseJSON[Constants.articles].array else { return }
@@ -37,10 +37,13 @@ class InternetService {
                 news.content = aritcle[Constants.content].string
                 news.url = aritcle[Constants.url].string
                 news.urlToImage = aritcle[Constants.urlToImage].string
-                news.title = aritcle[Constants.title].string
                 news.sourceId = aritcle[Constants.source][Constants.id].string
                 news.sourceName = aritcle[Constants.source][Constants.name].string
                 news.publishedAt = aritcle[Constants.publishedAt].string
+                news.title = aritcle[Constants.title].string
+                let contentString = aritcle[Constants.content].string
+                let stringContent = contentString.map { self?.fix(string: $0) }
+                news.content = stringContent ?? contentString
                 
                 newsArray.append(news)
             }
@@ -67,5 +70,16 @@ extension InternetService {
         static let title = "title"
         static let urlToImage = "urlToImage"
         static let url = "url"
+    }
+    
+    private func fix(string: String) -> String {
+        var str = string
+        let index = str.lastIndex(of: "[")
+        if let index = index {
+            str = String(str[..<index])
+            return str
+        }
+        
+        return str
     }
 }

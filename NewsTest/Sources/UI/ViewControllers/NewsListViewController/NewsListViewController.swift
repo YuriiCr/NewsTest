@@ -24,6 +24,12 @@ class NewsListViewController: UIViewController {
         loadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let cell = sender as? NewsTableViewCell else { return }
+        guard let vc = segue.destination as? DetailNewsViewController else { return }
+        cell.news.map { vc.article = $0 }
+        }
+    
     //MARK: IBActions
     
     @IBAction func reloadData(_ sender: UIBarButtonItem) {
@@ -58,8 +64,15 @@ class NewsListViewController: UIViewController {
 }
 
 extension NewsListViewController: UITableViewDelegate {
+    
+    //MARK: UITableViewDelegate
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
@@ -68,7 +81,6 @@ extension NewsListViewController: UITableViewDataSource {
     //MARK: UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(newsArray.count)
         return newsArray.count
     }
     
