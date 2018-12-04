@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JNK-wp-n8H">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--News List View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="NewsListViewController" customModule="NewsTest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="58i-89-4dO">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsCell" id="c2a-Si-qAh" customClass="NewsTableViewCell" customModule="NewsTest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="4" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c2a-Si-qAh" id="Zyb-lN-90k">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BQx-kg-mdT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="43.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="PzL-il-wus"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="wNl-sP-ACG">
+                                                    <rect key="frame" x="90" y="0.0" width="285" height="43.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EHF-Be-StM">
+                                                            <rect key="frame" x="0.0" y="0.0" width="285" height="28"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67g-LM-OUu">
+                                                            <rect key="frame" x="0.0" y="29" width="285" height="14.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wNl-sP-ACG" firstAttribute="leading" secondItem="BQx-kg-mdT" secondAttribute="trailing" id="2hN-ui-tIE"/>
+                                                <constraint firstAttribute="trailing" secondItem="wNl-sP-ACG" secondAttribute="trailing" id="4rB-tL-NPM"/>
+                                                <constraint firstItem="BQx-kg-mdT" firstAttribute="height" secondItem="wNl-sP-ACG" secondAttribute="height" id="J9l-3L-I6l"/>
+                                                <constraint firstAttribute="bottom" secondItem="wNl-sP-ACG" secondAttribute="bottom" id="QTD-Wv-1Bm"/>
+                                                <constraint firstItem="BQx-kg-mdT" firstAttribute="top" secondItem="Zyb-lN-90k" secondAttribute="top" id="YUf-ry-8yW"/>
+                                                <constraint firstItem="wNl-sP-ACG" firstAttribute="top" secondItem="Zyb-lN-90k" secondAttribute="top" id="bNx-vZ-BgU"/>
+                                                <constraint firstItem="BQx-kg-mdT" firstAttribute="leading" secondItem="Zyb-lN-90k" secondAttribute="leading" id="lGI-Do-vg3"/>
+                                                <constraint firstAttribute="bottom" secondItem="BQx-kg-mdT" secondAttribute="bottom" id="oVo-XI-eM4"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="contentLabel" destination="67g-LM-OUu" id="3BN-sV-bkJ"/>
+                                            <outlet property="newsImageView" destination="BQx-kg-mdT" id="I7C-d9-cZq"/>
+                                            <outlet property="titleLabel" destination="EHF-Be-StM" id="j1k-Hw-8LG"/>
+                                            <segue destination="DKZ-x1-ltl" kind="show" id="67K-6T-X8c"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="zmg-58-Bod"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ZbQ-C6-8kD"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="58i-89-4dO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="42t-YB-AMz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="58i-89-4dO" secondAttribute="bottom" id="OFX-My-cfe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="58i-89-4dO" secondAttribute="trailing" id="XM8-5a-WPy"/>
+                            <constraint firstItem="58i-89-4dO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h30-UZ-FyU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rOr-Mr-81P"/>
+                    <connections>
+                        <outlet property="tableView" destination="58i-89-4dO" id="2aZ-d7-wMM"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="qje-nb-ugy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="805.60000000000002" y="282.90854572713647"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="EOJ-RA-3zv">
+            <objects>
+                <viewController id="DKZ-x1-ltl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="M2Q-Ka-D8f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8DJ-2v-YEU"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lQ5-B3-OEz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1504" y="286"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Z1w-cG-kpt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JNK-wp-n8H" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Gc-cr-uRO">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="hca-wM-tYS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hza-FG-GOZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34" y="83"/>
+        </scene>
+    </scenes>
+</document>
