@@ -24,8 +24,9 @@ class InternetService {
     
     //MARK: Public functions
     
-    func getNews(block: @escaping ([NewsModel]) -> ()) {
-        Alamofire.request(urlString).responseJSON { [weak self] (response) in
+    func getNews(page: Int = 1, block: @escaping ([NewsModel]) -> ()) {
+        let params = [Constants.pageSize: Constants.pageSizeCount, Constants.page : page]
+        Alamofire.request(urlString,  parameters: params).responseJSON { [weak self] (response) in
             guard let response = response.value as? [String : Any] else { return }
             let responseJSON = JSON(response)
             guard let articles = responseJSON[Constants.articles].array else { return }
@@ -70,6 +71,10 @@ extension InternetService {
         static let title = "title"
         static let urlToImage = "urlToImage"
         static let url = "url"
+        
+        static let pageSize = "pageSize"
+        static let pageSizeCount = 15
+        static let page = "page"
     }
     
     private func fix(string: String) -> String {

@@ -21,4 +21,18 @@ struct NewsModel {
     var publishedAt: String?
     var content: String?
     
+    static func newsModel(from savedNews: News) -> NewsModel {
+        var news = NewsModel()
+        news.sourceId = savedNews.sourceId
+        news.sourceName = savedNews.sourceName
+        news.content = savedNews.content
+        news.title = savedNews.title
+        news.url = savedNews.url
+        news.urlToImage = savedNews.urlToImage
+        news.publishedAt = savedNews.publishedAt
+        news.content = savedNews.content
+        
+        return news
+    }
+    
 }

@@ -24,5 +24,23 @@ class CoreDataManager {
     
     //MARK: Methods
     
+    func deleteAll() {
+        container?.performBackgroundTask({ (context) in
+            News.deleteAll(in: context)
+        })
+    }
+    
+    func saveNews(with article: NewsModel) {
+        container?.performBackgroundTask({ (context) in
+            News.createSavedNews(from: article, in: context)
+        })
+    }
+    
+    func newsFromCoreData(block: @escaping ([News]) -> ()) {
+        container?.performBackgroundTask({ (context) in
+            let result = News.allNews(in: context)
+            block(result)
+        })
+    }
     
 }
